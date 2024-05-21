@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Image } from "react-native";
 import ImageViewer from "./components/ImageViewer";
+import Button from "./components/Button";
 
 const imageURL = require("./assets/cover-300x300.jpeg");
 
@@ -10,7 +11,11 @@ export default function App() {
       <View style={styles.imageContainer}>
         <ImageViewer imageURL={imageURL} />
       </View>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <View>
+      <Button label="Play" />
+      </View>
+
+
       <StatusBar style="auto" />
     </View>
   );
