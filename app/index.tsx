@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from "react-native";
 import ImageViewer from "../components/ImageViewer";
 import MainMenuLinks from "../components/MainMenuLinks";
 
-const imageURL = require("../assets/cover-300x300.jpeg");
+const imageURL = require("../assets/tic-tac-toe-cover.png");
 
 export default function Page() {
   return (
