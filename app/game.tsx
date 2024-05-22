@@ -6,7 +6,7 @@ import { StatusBar } from "expo-status-bar";
 export default function Game() {
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
+      <View style={styles.headerContainer}>
         <Text style={styles.playerText}>X</Text>
         <Text style={styles.headerText}> to play:</Text>
       </View>
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
   },
-  header: {
+  headerContainer: {
     flex: 1,
     alignItems: "center",
     flexDirection: "row",
@@ -40,13 +40,14 @@ const styles = StyleSheet.create({
     color: "#E80F88",
     fontSize: 22,
   },
+  board: {
+    flex: 3,
+    justifyContent: "center",
+  },
   footer: {
     width: 320,
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-  },
-  board: {
-    flex: 2,
   },
 });
