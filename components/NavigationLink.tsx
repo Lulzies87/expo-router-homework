@@ -1,7 +1,12 @@
 import { Link } from "expo-router";
 import { View, Text, StyleSheet } from "react-native";
 
-export default function NavigationLink({ location, innerText }: any) {
+type NavigationLinkProps = {
+  location: string;
+  innerText: string;
+};
+
+export default function NavigationLink({ location, innerText }: NavigationLinkProps) {
   return (
     <View style={styles.linkWrapper}>
       <Link style={styles.link} href={location}>

@@ -1,6 +1,10 @@
-import { StyleSheet, Image } from "react-native";
+import { StyleSheet, Image, ImageSourcePropType } from "react-native";
 
-export default function ImageViewer({ imageURL }: any) {
+type ImageViewerProps = {
+  imageURL: ImageSourcePropType;
+};
+
+export default function ImageViewer({ imageURL }: ImageViewerProps) {
   return <Image source={imageURL} style={styles.image} />;
 }
 

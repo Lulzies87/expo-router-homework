@@ -1,7 +1,12 @@
 import React from "react";
 import { Pressable, StyleSheet, Text } from "react-native";
 
-export default function Square({ value, onPress }: any) {
+type SquareProps = {
+  value: string;
+  onPress: () => void;
+};
+
+export default function Square({ value, onPress }: SquareProps) {
   return (
     <Pressable style={styles.square} onPress={onPress}>
       <Text style={styles.text}>{value}</Text>
