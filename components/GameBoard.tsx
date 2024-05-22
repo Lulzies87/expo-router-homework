@@ -1,18 +1,16 @@
 import { StyleSheet, View } from "react-native";
 import Square from "./Square";
 
-export default function GameBoard() {
+type GameBoardProps = {
+  squares: string[];
+  onPress: (i: number) => void;
+};
+export default function GameBoard({ squares, onPress }: GameBoardProps) {
   return (
     <View style={styles.gameContainer}>
-      <Square />
-      <Square />
-      <Square />
-      <Square />
-      <Square />
-      <Square />
-      <Square />
-      <Square />
-      <Square />
+      {squares.map((square, i) => (
+        <Square key={i} value={square} onPress={() => onPress(i)} />
+      ))}
     </View>
   );
 }
