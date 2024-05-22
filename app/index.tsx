@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   imageContainer: {
-    flex: 2,
+    flex: 3,
     paddingTop: 58,
   },
 });
