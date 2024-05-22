@@ -1,11 +1,12 @@
-import { View, Text } from "react-native";
-import { Link } from "expo-router";
+import { View } from "react-native";
+import GameBoard from "../components/GameBoard";
+import NavigationLink from "../components/NavigationLink";
 
 export default function Game() {
   return (
     <View>
-      <Text>Game Page</Text>
-      <Link href="/">Home</Link>
+      <GameBoard />
+      <NavigationLink location="/" innerText="Home"/>
     </View>
   );
 }
