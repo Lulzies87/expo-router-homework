@@ -2,40 +2,54 @@ import { StyleSheet, View, Text, Alert, Pressable } from "react-native";
 import GameBoard from "../components/GameBoard";
 import NavButton from "../components/NavButton";
 import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
-import { router } from "expo-router";
+import { useEffect, useState } from "react";
+import { useNavigation } from "@react-navigation/native";
+import { useDispatch } from "react-redux";
+import { countGame, countOWin, countXWin } from "./slices/statsSlice";
 
 export default function GameScreen() {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
-
-  const handlePress = (i: number) => {
-    if (checkWinner(squares) || squares[i]) {
-      return;
-    }
-
-    const newSquares = squares.slice();
-    newSquares[i] = xIsNext ? "X" : "O";
-    setSquares(newSquares);
-    setXIsNext(!xIsNext);
-  };
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const winner = checkWinner(squares);
-  let status;
-  if (winner) {
-    Alert.alert("Game Over", `Winner ${winner}`, [
+  const isBoardFull = squares.every((square) => square !== null);
+
+  useEffect(() => {
+    if (winner) {
+      handleGameOver(`${winner} Wins!`);
+      if (winner === "X") {
+        dispatch(countXWin());
+      } else {
+        dispatch(countOWin());
+      }
+    } else if (isBoardFull) {
+      handleGameOver("It's a tie!");
+    }
+  }, [squares]);
+
+  const handleGameOver = (message: string) => {
+    dispatch(countGame());
+    Alert.alert("Game Over", message, [
       {
         text: "Reset",
         onPress: () => resetGame(),
       },
       {
         text: "Home",
-        onPress: () => router.replace("/"),
+        onPress: () => navigation.navigate("Home" as never),
       },
     ]);
-  } else {
-    status = `Next player: ${xIsNext ? "X" : "O"}`;
-  }
+  };
+
+  const handlePress = (i: number) => {
+    if (winner || squares[i]) return;
+    const newSquares = squares.slice();
+    newSquares[i] = xIsNext ? "X" : "O";
+    setSquares(newSquares);
+    setXIsNext(!xIsNext);
+  };
 
   const resetGame = () => {
     setSquares(Array(9).fill(null));
