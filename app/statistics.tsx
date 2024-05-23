@@ -2,7 +2,7 @@ import { View, Text, StyleSheet } from "react-native";
 import NavigationLink from "../components/NavigationLink";
 import Stat from "../components/Stat";
 
-export default function Statistics() {
+export default function StatsScreen() {
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>

@@ -1,11 +1,11 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import ImageViewer from "../components/ImageViewer";
 import MainMenuLinks from "../components/MainMenuLinks";
 
 const imageURL = require("../assets/tic-tac-toe-cover.png");
 
-export default function Page() {
+export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.imageContainer}>
