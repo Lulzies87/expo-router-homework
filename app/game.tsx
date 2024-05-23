@@ -1,6 +1,6 @@
 import { StyleSheet, View, Text, Alert, Pressable } from "react-native";
 import GameBoard from "../components/GameBoard";
-import NavigationLink from "../components/NavigationLink";
+import NavButton from "../components/NavButton";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
 import { router } from "expo-router";
@@ -57,7 +57,7 @@ export default function GameScreen() {
             <Text style={styles.buttonText}>Reset</Text>
           </Pressable>
         </View>
-        <NavigationLink location="/" innerText="Home" />
+        <NavButton screenName="Home" innerText="Home" />
       </View>
       <StatusBar style="auto" />
     </View>

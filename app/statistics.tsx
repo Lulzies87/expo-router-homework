@@ -1,21 +1,28 @@
 import { View, Text, StyleSheet } from "react-native";
-import NavigationLink from "../components/NavigationLink";
+import NavButton from "../components/NavButton";
 import Stat from "../components/Stat";
+import { useSelector } from "react-redux";
+import { RootState } from "./store";
 
 export default function StatsScreen() {
+  const stats = useSelector((state: RootState) => state.stats);
+
   return (
     <View style={styles.container}>
       <View style={styles.headerContainer}>
         <Text style={styles.headerText}>Game Statistics</Text>
       </View>
       <View style={styles.statsContainer}>
-        <Stat title="Total games played" value={68} />
-        <Stat title="Games X won" value={11} />
-        <Stat title="Games Y won" value={17} />
-        <Stat title="Ties" value={40} />
+        <Stat title="Total games played" value={stats.totalGames} />
+        <Stat title="Games X won" value={stats.totalXWins} />
+        <Stat title="Games Y won" value={stats.totalYWins} />
+        <Stat
+          title="Ties"
+          value={stats.totalGames - stats.totalXWins - stats.totalYWins}
+        />
       </View>
       <View style={styles.footer}>
-        <NavigationLink location="/" innerText="Home" />
+        <NavButton screenName="Home" innerText="Home" />
       </View>
     </View>
   );

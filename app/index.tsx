@@ -1,31 +1,38 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View } from "react-native";
-import ImageViewer from "../components/ImageViewer";
-import MainMenuLinks from "../components/MainMenuLinks";
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { Provider } from "react-redux";
+import store from "./store";
+import HomeScreen from "./home";
+import GameScreen from "./game";
+import StatsScreen from "./statistics";
 
 const imageURL = require("../assets/tic-tac-toe-cover.png");
 
+const Stack = createStackNavigator();
+
 export default function App() {
   return (
-    <View style={styles.container}>
-      <View style={styles.imageContainer}>
-        <ImageViewer imageURL={imageURL} />
-      </View>
-      <MainMenuLinks />
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+      <NavigationContainer independent={true}>
+        <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen
+            name="Home"
+            component={HomeScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Game"
+            component={GameScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="Statistics"
+            component={StatsScreen}
+            options={{ headerShown: false }}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#0C0C0C",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  imageContainer: {
-    flex: 3,
-    paddingTop: 58,
-  },
-});
