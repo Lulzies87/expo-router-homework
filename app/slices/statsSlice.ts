@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   totalGames: 0,
   totalXWins: 0,
-  totalYWins: 0,
+  totalOWins: 0,
 };
 
 const statsSlice = createSlice({
@@ -16,12 +16,12 @@ const statsSlice = createSlice({
     countXWin: (state) => {
       state.totalXWins++;
     },
-    countYWin: (state) => {
-      state.totalYWins++;
+    countOWin: (state) => {
+      state.totalOWins++;
     },
   },
 });
 
-export const { countGame, countXWin, countYWin } = statsSlice.actions;
+export const { countGame, countXWin, countOWin } = statsSlice.actions;
 
 export const statsReducer = statsSlice.reducer;

@@ -15,10 +15,10 @@ export default function StatsScreen() {
       <View style={styles.statsContainer}>
         <Stat title="Total games played" value={stats.totalGames} />
         <Stat title="Games X won" value={stats.totalXWins} />
-        <Stat title="Games Y won" value={stats.totalYWins} />
+        <Stat title="Games O won" value={stats.totalOWins} />
         <Stat
           title="Ties"
-          value={stats.totalGames - stats.totalXWins - stats.totalYWins}
+          value={stats.totalGames - stats.totalXWins - stats.totalOWins}
         />
       </View>
       <View style={styles.footer}>
