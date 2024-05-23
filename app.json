@@ -2,10 +2,7 @@
   "expo": {
     "name": "expo-router-homework",
     "slug": "expo-router-homework",
-    "scheme": {
-      "type": "string",
-      "pattern": "^[a-z][a-z0-9+.-]*$"
-    },
+    "scheme": "tictactoe",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
