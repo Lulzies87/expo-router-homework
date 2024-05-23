@@ -3,8 +3,9 @@ import GameBoard from "../components/GameBoard";
 import NavigationLink from "../components/NavigationLink";
 import { StatusBar } from "expo-status-bar";
 import { useState } from "react";
+import { router } from "expo-router";
 
-export default function Game() {
+export default function GameScreen() {
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [xIsNext, setXIsNext] = useState(true);
 
@@ -25,11 +26,11 @@ export default function Game() {
     Alert.alert("Game Over", `Winner ${winner}`, [
       {
         text: "Reset",
-        onPress: () => console.log("Reset chosen"),
+        onPress: () => resetGame(),
       },
       {
         text: "Home",
-        onPress: () => console.log("Home chosen"),
+        onPress: () => router.replace("/"),
       },
     ]);
   } else {
